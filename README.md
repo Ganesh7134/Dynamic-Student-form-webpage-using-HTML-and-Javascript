@@ -34,3 +34,8 @@ Displays submitted data in a tabular format with two buttons:
 ```html
 <button onclick="window.location.href='student_form.html'">Back to Form</button>
 <button onclick="window.location.href='student_javascript_info.html'">View Code Explanation</button>
+
+### 3. Data Display Page (`student_javascript_info.html`)
+
+* Here you will get the information about javascript code explanation line by line along with keypoints
+* It has a navigating button to go back to Home page of "student_form.html"
