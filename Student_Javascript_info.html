@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JavaScript Code Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .code {
+            font-family: Consolas, monospace;
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .note {
+            background-color: #fffde7;
+            padding: 10px;
+            border-left: 4px solid #ffd600;
+            margin: 10px 0;
+        }
+        .warning {
+            background-color: #ffebee;
+            padding: 10px;
+            border-left: 4px solid #f44336;
+            margin: 10px 0;
+        }
+        input[type="submit"]{
+        padding: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: Arial, sans-serif;
+        width:100%
+        }   
+        .submit:hover{
+            background-color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Code Explanation</h1>
+
+    <div class="section">
+        <h2>URL Parameter Handling</h2>
+        <p><span class="code">const urlParams = new URLSearchParams(window.location.search);</span></p>
+        <ul>
+            <li>Creates a new <span class="code">URLSearchParams</span> object</li>
+            <li>Parses the query string from the current URL (everything after the <span class="code">?</span>)</li>
+            <li>Example: For <span class="code">student_db.html?Fname=John&Lname=Doe</span>, it extracts <span class="code">Fname=John&Lname=Doe</span></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Displaying Form Data</h2>
+        <p><span class="code">document.getElementById('displayFname').textContent = urlParams.get('Fname');</span></p>
+        <ul>
+            <li>Gets the <span class="code">'Fname'</span> parameter from the URL</li>
+            <li>Sets it as text content for the element with ID <span class="code">'displayFname'</span></li>
+            <li>Example: Sets "John" if URL contains <span class="code">?Fname=John</span></li>
+        </ul>
+
+        <p><span class="code">document.getElementById('displayLname').textContent = urlParams.get('Lname');</span></p>
+        <ul>
+            <li>Same as above but for last name</li>
+            <li>Retrieves <span class="code">'Lname'</span> parameter value</li>
+        </ul>
+
+        <p><span class="code">document.getElementById('displaySID').textContent = urlParams.get('SIN');</span></p>
+        <ul>
+            <li>Gets student ID from <span class="code">'SIN'</span> parameter</li>
+            <li>Displays in element with ID <span class="code">'displaySID'</span></li>
+        </ul>
+
+        <p><span class="code">document.getElementById('displayDOB').textContent = urlParams.get('dob');</span></p>
+        <ul>
+            <li>Retrieves date of birth from <span class="code">'dob'</span> parameter</li>
+            <li>Shows in <span class="code">'displayDOB'</span> element</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Handling Radio Buttons (Gender)</h2>
+        <p><span class="code">const gender = urlParams.get('gender') || 'Not selected';</span></p>
+        <ul>
+            <li>Gets <span class="code">'gender'</span> parameter value</li>
+            <li>Uses logical OR (<span class="code">||</span>) to provide default "Not selected" if no value exists</li>
+            <li>Example: Returns "Male" if URL has <span class="code">gender=Male</span>, otherwise "Not selected"</li>
+        </ul>
+
+        <p><span class="code">document.getElementById('displayGender').textContent = gender;</span></p>
+        <ul>
+            <li>Displays the retrieved gender value</li>
+            <li>Shows either the selected gender or default text</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Handling Checkboxes (Hobbies)</h2>
+        <p><span class="code">const hobbies = urlParams.getAll('hobbies').join(', ');</span></p>
+        <ul>
+            <li><span class="code">getAll()</span> gets all values for <span class="code">'hobbies'</span> parameter (since multiple can be selected)</li>
+            <li><span class="code">join(', ')</span> combines them into a comma-separated string</li>
+            <li>Example: Converts <span class="code">["Sports","Music"]</span> to "Sports, Music"</li>
+        </ul>
+
+        <p><span class="code">document.getElementById('displayHobbies').textContent = hobbies || 'None';</span></p>
+        <ul>
+            <li>Displays the joined hobbies string</li>
+            <li>Shows "None" if no hobbies were selected (empty string is falsy)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Remaining Fields</h2>
+        <p><span class="code">document.getElementById('displayEmail').textContent = urlParams.get('email');</span></p>
+        <ul>
+            <li>Gets and displays email address</li>
+            <li>Shows empty string if no email provided</li>
+        </ul>
+
+        <p><span class="code">document.getElementById('displayPassword').textContent = urlParams.get('password');</span></p>
+        <ul>
+            <li>Displays password (note: insecure in URL)</li>
+            <li>In production, should never expose passwords like this</li>
+        </ul>
+
+        <p><span class="code">document.getElementById('displayDesc').textContent = urlParams.get('description');</span></p>
+        <ul>
+            <li>Shows the self-description text</li>
+            <li>Empty if no description provided</li>
+        </ul>
+
+        <p><span class="code">document.getElementById('displaySkills').textContent = urlParams.get('skills');</span></p>
+        <ul>
+            <li>Displays selected skill from dropdown</li>
+            <li>Empty if no selection made</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Key Notes</h2>
+        <div class="warning">
+            <h3>Security Warning:</h3>
+            <ul>
+                <li>GET method exposes all data in URL (including passwords)</li>
+                <li>Never use for sensitive information in production</li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <h3>Form Requirements:</h3>
+            <ul>
+                <li>Form must use <span class="code">method="get"</span></li>
+                <li>All inputs need proper <span class="code">name</span> attributes</li>
+                <li>Checkboxes need same <span class="code">name</span> but different <span class="code">values</span></li>
+                <li>Radio buttons need same <span class="code">name</span> to work as a group</li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <h3>Default Handling:</h3>
+            <ul>
+                <li>Only gender and hobbies have default fallbacks</li>
+                <li>Other fields will show empty string if not provided</li>
+            </ul>
+        </div>
+
+        <div class="note">
+            <h3>Data Types:</h3>
+            <ul>
+                <li><span class="code">get()</span> returns single values (text inputs, radios, selects)</li>
+                <li><span class="code">getAll()</span> returns arrays (checkboxes)</li>
+            </ul>
+        </div>
+    </div>
+    <br><br>
+    <a href = "Student_form.html">
+    <input type = "submit" value="Back to home &#127969;" class="submit">
+    </a>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Form</title>
+</head>
+<style>
+    h1{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: "200px";
+        color: rgb(12, 12, 24);
+        background-color: rgb(193, 234, 9);
+        padding: 5px;
+        text-align: center;
+        text-shadow : 10px;
+    }
+    select{
+        width: 200px;
+    }
+    
+    label {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    width: 150px;
+    margin-bottom: 8px;
+    }
+
+    /* Style all input elements */
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="file"],
+    input[type="submit"],
+    input[type="radio"],
+    input[type="checkbox"] ,
+    input[type="datetime-local"],
+    input[type="time"],
+    input[type="week"],
+    input[type="month"],
+    input[type="tel"],
+    input[type="date"]{
+        padding: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: Arial, sans-serif;
+        
+    }   
+
+    /* Style select dropdown */
+    select {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Style textarea */
+    textarea {
+        width: 300px;
+        height: 100px;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-family: Arial, sans-serif;
+    }
+    form {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        /* Optional: set a fixed width */
+        width: 50%;
+        }
+        .submit:hover{
+            background-color: chocolate;
+        }
+</style>
+<body>
+    <h1>Student Form data</h1>
+    <marquee direction = "right" behavior = "alternate" hspace = "280px" scrollamount = "4" bgcolor="lightgrey"><p style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"><b style="color: brown;">Note : </b> <span style="color:red">*</span> Marked fields are mandatory - Please fill all required information</p></marquee><br><br>
+    <fieldset style="text-align:left;">
+        <legend style = "text-align: center;
+        color: blueviolet;
+        background-color: chartreuse;
+        font-size: 20px;">Student Form Details</legend><br>
+        <FORM action="student_db.html">
+            <label for = "FN">First name <span style = "color:red">*</span> : </label> <! For attribute used to refer input ID or name reference of input tag>
+            <input type="text" id="FN" name = "Fname" placeholder="Enter your First name" required><br> <! If you want to disable input use disabled to make that tag disabled>
+            <! required attribbute just like a star mark in the forms denotes those are mandatory to enter>
+             <label for = "LN">Last name <span style = "color:red">*</span> : </label>
+            <input type="text" id="LN" name = "Lname" placeholder="Enter your Last name" required><br> 
+            <label for = "SI">Student ID <span style = "color:red">*</span> : </label>
+            <input type="text" id="SI" name = "SIN" placeholder="Enter your Student ID" required><br>
+            <label for="">Date of birth <span style = "color:red">*</span> : </label>
+            <input type="date" placeholder="selct date" name = "dob" required><br><br>
+            <label for = "Gender">Gender <span style = "color:red">*</span> : </label> <! working on radio buttons its better to use name reference to select only one option>
+            <input type = "radio" name = "gender" value = "Male" required>Male
+            <input type = "radio" name = "gender" value = "Female">Female
+            <input type = "radio" name = "gender" value = "others">Others<br>
+            <label>Hobbies : </label>
+            <input type="checkbox" name="hobbies" value = "Instagram">Instagram
+            <input type="checkbox" name = "hobbies" value = "Whatsapp">Whatsapp
+            <input type="checkbox" name = "hobbies" value = "Chess">Chess 
+            <input type = "checkbox" name = "hobbies" value = "FootBall">Football<br>
+            <label for="">Enter your email <span style = "color:red">*</span> : </label>
+            <input type = "email" placeholder="Enter your email" name="email" required><br>
+            <label for="">Enter your password <span style = "color:red">*</span> : </label>
+            <input type="password" placeholder="Enter your password" name = "password" required><br>
+            <fieldset style="width: 100px;">
+                <legend>Describe yourself</legend>
+                <textarea name="description"></textarea><br><br>
+            </fieldset><br>
+            <label for="">Skills</label>
+            <select name = "skills">
+                <option>------</option>
+                <option>Python</option>
+                <option>Machine Learning</option>
+                <option>AI</option>
+                <option>Java</option>
+                <option>Mysql</option>
+            </select> <br><br>
+            
+            <input type="submit" style="width: 340px; text-align: center;" class="submit">
+            
+        </FORM>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Database</title>
+    <style>
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-top: 20px; 
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 8px; 
+            text-align: left; 
+        }
+
+        th { 
+            background-color: #f2f2f2; 
+        }
+        .back-btn { 
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            width : 30%;
+            text-align: center;
+        }   
+        .back-btn:hover{
+            background-color: chocolate;
+        }
+        input[type="submit"]{
+        padding: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: Arial, sans-serif;
+        width:30%;
+        text-align: center;
+        }   
+        .submit:hover{
+            background-color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <h1>Students Form Data Collection</h1>
+    
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Student ID</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Hobbies</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Description</th>
+                <th>Skills</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="displayFname"></td>
+                <td id="displayLname"></td>
+                <td id="displaySID"></td>
+                <td id="displayDOB"></td>
+                <td id="displayGender"></td>
+                <td id="displayHobbies"></td>
+                <td id="displayEmail"></td>
+                <td id="displayPassword"></td>
+                <td id="displayDesc"></td>
+                <td id="displaySkills"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <center><button class="back-btn" onclick="window.location.href='student_form.html'">&#128072;&nbsp;Back to Form</button>
+    <a href = "Student_Javascript_info.html">
+    <input type = "submit" value="&#128073;Way to Javascript code info" class="submit">
+    </a></center>
+    <script>
+        // Get URL parameters to access the data from search URL
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Display the data
+        document.getElementById('displayFname').textContent = urlParams.get('Fname');
+        document.getElementById('displayLname').textContent = urlParams.get('Lname');
+        document.getElementById('displaySID').textContent = urlParams.get('SIN');
+        document.getElementById('displayDOB').textContent = urlParams.get('dob');
+        // Get the gender value from URL parameters
+        const gender = urlParams.get('gender') || 'Not selected';
+
+        // Display the gender value
+        document.getElementById('displayGender').textContent = gender;
+        
+        // For checkboxes (hobbies), we need to handle multiple values
+        const hobbies = urlParams.getAll('hobbies').join(', ');
+        document.getElementById('displayHobbies').textContent = hobbies || 'None';
+        
+        document.getElementById('displayEmail').textContent = urlParams.get('email');
+        document.getElementById('displayPassword').textContent = urlParams.get('password');
+        document.getElementById('displayDesc').textContent = urlParams.get('description') || 'None';
+        document.getElementById('displaySkills').textContent = urlParams.get('skills');
+    </script>
+</body>
+</html>
